@@ -1,6 +1,7 @@
 package com.example.config.concerts;
 
 import com.example.config.tickets.Ticket;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.Future;
@@ -34,7 +35,7 @@ public class Concert {
 
     @Size(min = 10, max = 500, message = "Description must be between 10 and 500 characters")
     private String description;
-
+    @JsonManagedReference
     @OneToMany(mappedBy = "concert", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> tickets;
 

@@ -6,12 +6,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
@@ -27,10 +30,20 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         if (token != null && token.startsWith("Bearer ")) {
             token = token.substring(7); // Вилучаємо "Bearer " з початку токену
             try {
+                // Отримуємо email і ролі з токену
                 String email = jwtTokenProvider.getEmailFromToken(token);
-                if (email != null) {
-                    // Якщо токен валідний, додаємо інформацію користувача в SecurityContext
-                    SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(email, null, new ArrayList<>()));
+                List<String> roles = jwtTokenProvider.getRolesFromToken(token); // Метод для отримання ролей
+
+                if (email != null && roles != null) {
+                    // Конвертуємо ролі в GrantedAuthority
+                    List<SimpleGrantedAuthority> authorities = roles.stream()
+                            .map(SimpleGrantedAuthority::new)
+                            .collect(Collectors.toList());  // Коригуємо для зворотнього перетворення в список
+
+                    // Додаємо інформацію користувача в SecurityContext
+                    UsernamePasswordAuthenticationToken authentication =
+                            new UsernamePasswordAuthenticationToken(email, null, authorities);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             } catch (Exception e) {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -41,5 +54,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
+
 }
 

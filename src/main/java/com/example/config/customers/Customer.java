@@ -1,6 +1,7 @@
 package com.example.config.customers;
 
 import com.example.config.tickets.Ticket;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -36,16 +37,20 @@ public class Customer {
     private String password;
     @Column(unique = true)
     private String authToken;
+    @Enumerated(EnumType.STRING) // Зберігаємо роль як текст у БД
+    private Role role;
+    @JsonManagedReference
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> tickets;
 
-    public Customer(String email, String name, String phoneNumber, String login, String password,String authToken) {
+    public Customer(String email, String name, String phoneNumber, String login, String password,String authToken, Role role) {
         this.email = email;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.login = login;
         this.password = password;
         this.authToken=authToken;
+        this.role=role;
     }
 
     public Customer() {
@@ -105,6 +110,14 @@ public class Customer {
 
     public void setAuthToken(String authToken) {
         this.authToken = authToken;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public List<Ticket> getTickets() {

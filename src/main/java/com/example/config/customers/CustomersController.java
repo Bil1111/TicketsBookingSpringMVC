@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/customer")
 public class CustomersController {
 
     @Autowired
@@ -67,24 +67,27 @@ public class CustomersController {
         Optional<Customer> customer = customersService.findByEmail(request.getEmail());
 
         if (customer.isPresent() && customersService.loginUser(request.getEmail(), request.getPassword())) {
-            // Генерація токену після успішного входу
-            String token = jwtTokenProvider.generateToken(request.getEmail()); // Генерація токену
-            Map<String, String> response = new HashMap<>();
-            response.put("token", token); // Повертаємо токен у відповіді
-            return new ResponseEntity<>(response, HttpStatus.OK); // Повертаємо ResponseEntity з Map
-        } else {
-            Map<String, String> errorResponse = new HashMap<>();
+            Customer loggedInCustomer = customer.get();
 
-            // Якщо користувача не знайдено
-            if (!customer.isPresent()) {
-                errorResponse.put("error", "User not found");
-                return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+            // Генерація токена
+            String token = jwtTokenProvider.generateToken(loggedInCustomer.getEmail(), loggedInCustomer.getRole());
+            Map<String, String> response = new HashMap<>();
+            response.put("token", token);
+
+            // Перенаправлення залежно від ролі
+            if (loggedInCustomer.getRole().equals(Role.ADMIN)) {
+                response.put("redirect", "/admin/dashboard"); // Адмін
+            } else {
+                response.put("redirect", "/user/dashboard"); // Звичайний користувач
             }
 
-            // Якщо неправильний пароль
-            errorResponse.put("error", "Invalid password");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Invalid email or password");
             return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
         }
     }
+
 
 }

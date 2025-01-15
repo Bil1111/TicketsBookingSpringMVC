@@ -1,0 +1,458 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+
+header {
+  background-color: #fc8f00;
+  padding: 6px;
+  text-align: center;
+  color: white;
+  display: flex;
+
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 20px auto;
+}
+
+nav {
+  font-family: "e-ukr";
+  margin: 10px auto;
+  text-align: center;
+  margin-right: 90px;
+
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul .Descktop  {
+  margin-right: 120px;
+  z-index: 1;
+
+}
+
+nav ul .Descktop .nav-item {
+  display: inline-block;
+  margin: 0 7px;
+  /* margin-left: 30px; */
+
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.0rem;
+
+}
+
+nav ul li a:hover {
+  color: #000000;
+  transition: 0.2s ease-in-out;
+}
+
+
+/* nav ul li .Registr_pc {
+    background-color: #f4f4f4;
+    color: #000;
+    border-radius: 10px;
+}
+
+nav ul li .Registr_pc:hover {
+    background-color: #000  ;
+    color: #f4f4f4;
+    border-radius: 10px;
+} */
+
+/* footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+} */
+
+.LinkIcon {
+  position: absolute;
+  top: 0vw;
+  left: 12vw;
+  z-index: 10;
+}
+
+.LinkIconPhone {
+  position: absolute;
+  top: 8px;
+  left: 230px;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.map-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.map-container li {
+  text-align: center;
+}
+
+.findshelter{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+
+}
+.findshelter input{
+  margin-right: 20px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  width: 20%;
+}
+
+.findshelter button{
+  font-family: 'e-ukr';
+  margin-left: 20px;
+  background-color: #fc8f00;
+  border: #fc8f00;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.findshelter button:hover{
+
+  background-color: #e28000;
+  border: #e28000;
+  color: #ffffff;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+
+/* .found {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: larger;
+
+} */
+
+/* input[type="text"] {
+    width: 10%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+} */
+
+/* .foundMAp {
+    padding: 10px 20px;
+    cursor: pointer;
+
+} */
+
+/* .foundMAp:hover {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: tomato;
+
+} */
+
+.Regg{
+  font-family: "e-ukr";
+  margin-right: 90px;
+
+}
+/* .Regg ol{
+   list-style-type: none;
+}
+
+.drop:hover .menulist{
+   display: block;
+}
+.menulist{
+   display: none;
+   position: absolute;
+   background-color: rgba(0, 0, 0, 0.0 45);
+   border-radius: 10px;
+   min-width: 200px;
+   z-index: 1;
+   left: 990px;
+
+}
+
+.menulist a{
+   display: block;
+  margin-bottom: 5px;
+} */
+
+
+.Enter{
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.0rem;
+  margin-right: 10px;
+}
+
+.Enter:hover{
+  text-decoration: none;
+  color: #000000;
+  transition: 0.2s ease-in-out;
+}
+
+.Registr{
+  border-radius: 15px;
+  background-color: #f4f4f4;
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.0rem;
+  margin-left: 10px;
+  padding: 10px;
+
+}
+
+.Registr:hover{
+  background-color: #000000;
+  text-decoration: none;
+  color: #f4f4f4;
+  transition: 0.2s ease-in-out;
+
+}
+
+.ReggPhone {
+  font-family: "e-ukr";
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  margin-top: 40px;
+  margin-left: 20px;
+
+}
+
+.img{
+  width: 120px;
+  height: 120px;
+
+}
+
+.imgPhone{
+  width: 60px;
+  height: 60px;
+}
+
+.btn-close{
+  margin-right: 20px;
+  margin-top: -30px;
+  size: 55px;
+}
+
+.navbar-toggler-icon{
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+}
+
+.offcanvas-header{
+  color: #000000;
+  background-color: #fc8f00;
+}
+
+.offcanvas-header h2{
+  font-family: "e-ukr";
+  margin-top:20px ;
+  margin-left:30px ;
+  margin-bottom:35px ;
+}
+
+.offcanvas-body, .Phone_and_Tablet, .ReggPhone{
+  background-color: #fc8f00;
+}
+
+
+.Phone_and_Tablet .nav-item .nav-link{
+  margin-bottom: 20px;
+}
+
+@media (min-width: 992px) and (max-width: 1470px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    padding-left: 70px;
+  }
+
+  .LinkIcon {
+    position: absolute;
+    top: 8px;
+    left: -12px;
+  }
+}
+
+/* розібратися як працює */
+/* .nav-item {
+   position: relative;
+   display: inline-block;
+ } */
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  z-index: 1;
+  left: 200px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Показати випадаюче меню при наведенні */
+.nav-item:hover .dropdown-content {
+  display: block;
+  border-radius: 10px;
+}
+
+
+.login{
+  margin-right: 100px;
+}
+.btn_out{
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.btn_out:hover{
+  background-color: rgb(3, 3, 3);
+  color: #f4f4f4;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+}
+.photo{
+  height: 25px;
+  width: 50px;
+  position: relative;
+  top: -3px;
+}
+/* Загальний стиль для футера */
+footer {
+  font-family: 'e-ukr';
+  font-size: smaller;
+  background-color:#dcdcdc;
+
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  padding-top: 10px;
+}
+.info-section1{
+  margin-top: 25px;
+}
+.info-section1 ul,
+.info-section2 ul{
+  list-style: none;
+
+}
+
+.info-section1 li,
+.info-section2 li{
+  line-height: 1.7rem;
+}
+
+.info-section1 a,
+.info-section2 a{
+  text-decoration: none;
+  color: #000;
+
+}
+.info-section1 a:hover,
+.info-section2 a:hover{
+  text-decoration: none;
+  color: #fc8f00;
+  transition: 0.2s ease-in-out;
+}
+
+.info-section2 p{
+  text-align: center;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+
+}
+
+.credits-section {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.logo-section{
+  position: relative;
+  left: 20px;
+}
+.logo-section p {
+  font-size: larger;
+  position: relative;
+  top: 20px;
+}
+
+.imgfooter{
+  height: 100px;
+  position: relative;
+  left: 20px;
+  top: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-section,
+  .logo-section,
+  .credits-section {
+    margin-bottom: 2rem;
+  }
+}
+

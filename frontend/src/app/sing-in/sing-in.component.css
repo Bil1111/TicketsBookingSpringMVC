@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box; /* Включити відступи в ширину */
+  margin: 0; /* Скидання зовнішніх відступів */
+  padding: 0; /* Скидання внутрішніх відступів */
+}
+
+body {
+  width: 100%;
+  height: 100vh; /* Займає всю висоту вікна */
+  display: flex; /* Використання flex для центрування */
+  justify-content: center; /* Центрування по горизонталі */
+  align-items: center; /* Центрування по вертикалі */
+  background-color: #f4f4f4; /* Світло-сірий фон */
+}
+
+.container {
+  font-family: "e-ukr";
+  width: 100%;
+  max-width: 400px; /* Максимальна ширина контейнера */
+  margin: 75px auto; /* Центрування контейнера */
+}
+
+.Costumer_Sing_In {
+  display: flex;
+  flex-direction: column; /* Вертикальне розташування */
+  justify-content: center;
+  align-items: center;
+  padding: 2rem; /* Внутрішній відступ */
+  background-color: #ffffff; /* Білий фон */
+  border-radius: 10px; /* Закруглені кути */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Тінь */
+  animation: fadeIn 0.5s ease-in-out; /* Анімація появи */
+}
+
+h2 {
+  margin-bottom: 2rem;
+  text-align: center; /* Центрування тексту */
+  color: #333; /* Колір тексту */
+}
+
+input {
+  font-family: "e-ukrL";
+  width: 100%; /* Ширина інпутів */
+  padding: 10px; /* Внутрішній відступ */
+  border: 1px solid #ccc; /* Сірий контур */
+  border-radius: 4px; /* Закруглені кути */
+  margin-bottom: 1rem; /* Відступ знизу для кожного інпуту */
+  transition: border 0.3s; /* Анімація зміни контуру */
+}
+
+input:focus {
+  border: 1px solid #007bff; /* Синій контур при фокусі */
+  outline: none; /* Скидання стандартного контуру */
+}
+
+.En {
+  
+  width: 100%; /* Ширина кнопки */
+  padding: 7px; 
+  background-color: #fc8f00; /* Синій фон */
+  color: white; /* Білий текст */
+  border: none; /* Без контуру */
+  border-radius: 5px; /* Закруглені кути */
+  cursor: pointer; /* Курсор у вигляді вказівника */
+  font-size: 16px; /* Розмір шрифту */
+  transition: background-color 0.3s; /* Анімація зміни кольору фону */
+  margin-top: 15px;
+}
+
+.En:hover {
+  background-color: #e48304; /* Темніший синій при наведенні */
+}
+
+.register-link {
+  font-family: "e-ukrL";
+  text-align: center; /* Центрування тексту */
+  margin-top: 1rem; /* Відступ зверху */
+}
+
+.register-link a {
+  color: #007bff; /* Синій текст */
+  text-decoration: none; /* Без підкреслення */
+}
+
+.register-link a:hover {
+  text-decoration: underline; /* Підкреслення при наведенні */
+}
+
+.error {
+  color: red; /* Червоний колір для повідомлення про помилку */
+  margin-top: 1rem; /* Відступ зверху */
+}
+
+
+label{
+  font-family: "e-ukrL";
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+.p{
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+.te{
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+/* Анімація появи */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

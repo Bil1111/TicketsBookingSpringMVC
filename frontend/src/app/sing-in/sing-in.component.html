@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="Costumer_Sing_In">
+    <h2>Увійти</h2>
+    <form (ngSubmit)="login()" class="login-form">
+      <label for="username">Електронна пошта:</label>
+      <input type="text" class="te" id="username" [(ngModel)]="email" name="email"  required>
+
+      <label for="password">Пароль:</label>
+      <input type="password" class="p" id="password" [(ngModel)]="password" name="password"  required>
+      <button type="submit" class="En">Вхід</button>
+    </form>
+    <p class="register-link">Ще немає акаунту? <a href="/regest">Зареєструватися</a></p>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  </div>
+</div>

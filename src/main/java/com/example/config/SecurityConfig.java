@@ -49,13 +49,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()  // Вимкнення CSRF для REST API
-                .authorizeRequests()
-                .anyRequest().permitAll()  // Дозволяємо доступ до всіх запитів
-                .and()
-                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);  // Додаємо JWT фільтр
+                .csrf().disable() // Вимкнення CSRF для REST API
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN") // Доступ лише для ADMIN
+                        .requestMatchers("/customer/**").hasAuthority("USER")   // Доступ лише для USER
+                        .requestMatchers("/login", "/api/customer/add").permitAll() // Доступ до сторінок входу та реєстрації
+                        .anyRequest().authenticated() // Усі інші запити вимагають аутентифікації
+                )
+                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class); // Додаємо JWT фільтр
         return http.build();
     }
+
+
 
     // Оголошення PasswordEncoder
     @Bean

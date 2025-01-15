@@ -27,7 +27,8 @@ public class CustomersService {
                 request.getPhoneNumber(),
                 request.getLogin(),
                 passwordEncoder.encode(request.getPassword()),
-                jwtTokenProvider.generateToken(request.getEmail()));
+                jwtTokenProvider.generateToken(request.getEmail(),Role.USER),
+                Role.USER);
         customersRepository.save(customer);
     }
 
@@ -80,7 +81,7 @@ public class CustomersService {
         boolean isPasswordValid = passwordEncoder.matches(password, customer.getPassword());
         if (isPasswordValid) {
             // Генерація токену після перевірки паролю
-            String token = jwtTokenProvider.generateToken(email);
+            String token = jwtTokenProvider.generateToken(email,customer.getRole());
             customer.setAuthToken(token);  // Оновлення токену для користувача
             customersRepository.save(customer); // Зберігаємо оновленого користувача
         }
